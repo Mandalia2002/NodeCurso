@@ -1,0 +1,45 @@
+{"level":"info","message":"Hola Mundo","service":"user-service","timestamp":"2025-03-05T23:00:38.915Z"}
+{"at":"2025-03-05T23:00:38.919Z","level":"error","message":"error Malo aaaaaa","service":"app.js","timestamp":"2025-03-05T23:00:38.919Z"}
+{"level":"info","message":"Hola Mundo","service":"user-service","timestamp":"2025-03-05T23:00:38.915Z"}
+{"at":"2025-03-05T23:00:38.920Z","level":"error","message":"error Malo aaaaaa","service":"app.js","timestamp":"2025-03-05T23:00:38.920Z"}
+{"level":"info","message":"Hola Mundo","service":"user-service","timestamp":"2025-03-05T23:00:38.917Z"}
+{"at":"2025-03-05T23:00:38.922Z","level":"error","message":"error Malo aaaaaa","service":"app.js","timestamp":"2025-03-05T23:00:38.922Z"}
+{"level":"info","message":"Hola Mundo","service":"user-service","timestamp":"2025-03-05T23:00:38.918Z"}
+{"at":"2025-03-05T23:00:38.922Z","level":"error","message":"error Malo aaaaaa","service":"app.js","timestamp":"2025-03-05T23:00:38.922Z"}
+{"level":"info","message":"Hola Mundo","service":"user-service","timestamp":"2025-03-05T23:02:06.545Z"}
+{"level":"info","message":"Hola Mundo","service":"user-service","timestamp":"2025-03-05T23:02:06.545Z"}
+{"at":"2025-03-05T23:02:06.550Z","level":"error","message":"error Malo aaaaaa","service":"app.js","timestamp":"2025-03-05T23:02:06.550Z"}
+{"at":"2025-03-05T23:02:06.549Z","level":"error","message":"error Malo aaaaaa","service":"app.js","timestamp":"2025-03-05T23:02:06.550Z"}
+{"level":"info","message":"Hola Mundo","service":"user-service","timestamp":"2025-03-05T23:02:06.545Z"}
+{"level":"info","message":"Hola Mundo","service":"user-service","timestamp":"2025-03-05T23:02:06.545Z"}
+{"at":"2025-03-05T23:02:06.549Z","level":"error","message":"error Malo aaaaaa","service":"app.js","timestamp":"2025-03-05T23:02:06.550Z"}
+{"at":"2025-03-05T23:02:06.550Z","level":"error","message":"error Malo aaaaaa","service":"app.js","timestamp":"2025-03-05T23:02:06.550Z"}
+{"level":"info","message":"Hola Mundo","service":"user-service","timestamp":"2025-03-05T23:09:17.096Z"}
+{"at":"2025-03-05T23:09:17.101Z","level":"error","message":"error Malo aaaaaa","service":"app.js","timestamp":"2025-03-05T23:09:17.101Z"}
+{"level":"info","message":"Hola Mundo","service":"user-service","timestamp":"2025-03-05T23:09:17.096Z"}
+{"at":"2025-03-05T23:09:17.101Z","level":"error","message":"error Malo aaaaaa","service":"app.js","timestamp":"2025-03-05T23:09:17.101Z"}
+{"level":"info","message":"Hola Mundo","service":"user-service","timestamp":"2025-03-05T23:09:17.118Z"}
+{"at":"2025-03-05T23:09:17.128Z","level":"error","message":"error Malo aaaaaa","service":"app.js","timestamp":"2025-03-05T23:09:17.128Z"}
+{"level":"info","message":"Hola Mundo","service":"user-service","timestamp":"2025-03-06T18:41:38.943Z"}
+{"at":"2025-03-06T18:41:38.947Z","level":"error","message":"error Malo aaaaaa","service":"app.js","timestamp":"2025-03-06T18:41:38.947Z"}
+{"level":"info","message":"testeo sandia","service":"user-service"}
+{"level":"info","message":"testeo sandia","service":"user-service"}
+{"level":"info","message":"testeo sandia","service":"user-service"}
+{"level":"info","message":"testeo sandia","service":"user-service"}
+{"level":"info","message":"testeo sandia","service":"user-service"}
+{"level":"info","message":"testeo sandia","service":"user-service"}
+{"level":"info","message":"testeo sandia","service":"user-service"}
+{"level":"info","message":"testeo sandia","service":"user-service"}
+{"level":"info","message":"testeo sandia","service":"user-service"}
+{"level":"info","message":"testeo sandia","service":"user-service"}
+{"level":"info","message":"testeo sandia","service":"user-service"}
+{"level":"info","message":"testeo sandia","service":"user-service"}
+{"level":"info","message":"testeo sandia","service":"user-service"}
+{"level":"info","message":"testeo sandia","service":"user-service"}
+{"level":"info","message":"testeo sandia","service":"user-service"}
+{"level":"info","message":"testeo sandia","service":"user-service"}
+{"level":"info","message":"testeo sandia","service":"user-service"}
+{"level":"info","message":"testeo sandia","service":"user-service"}
+{"level":"info","message":"testeo sandia","service":"user-service"}
+{"level":"info","message":"testeo sandia","service":"user-service"}
+{"level":"info","message":"testeo sandia","service":"user-service"}
