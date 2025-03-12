@@ -1,14 +1,22 @@
+import { SendEmailLogs } from '../domain/use-case/email/send-logs';
+import { FileSystemDataSource } from '../infrastructure/file-system.datasource';
+import { LogRepositoryImpl } from '../infrastructure/repositories/log-impl.repositovy';
 import { EmailService } from './email/email.service';
 
-/*const fileSystemRepository = new LogRepositoryImpl(
+const fileSystemRepository = new LogRepositoryImpl(
     new FileSystemDataSource()
-)*/
+)
+
+const emailS = new EmailService();
 
 export class Server {
     public static start() {
         console.log('aaaaaaaaaaaaaaaaaaaa')
-        //const emailS = new EmailService();
-        //emailS.sendEmailWithFileSystemlog('gct.sofia.perez@gmail.com')
+        //User Case de Email Sender
+        //new SendEmailLogs(emailS, fileSystemRepository).execute('gct.sofia.perez@gmail.com');
+
+        /*
+        emailS.sendEmailWithFileSystemlog('gct.sofia.perez@gmail.com')*/
         //Email Sender
 
         //NOC

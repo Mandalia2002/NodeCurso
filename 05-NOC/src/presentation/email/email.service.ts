@@ -1,5 +1,7 @@
 import nodemailer from 'nodemailer';
 import { envs } from '../../config/plugins/envs.plugin';
+import { LogRepository } from '../../domain/repository/log.repository';
+import { LogEntitiy, LogSeverityLevel } from '../../domain/entities/log.entity';
 
 interface sendEmailOptions{
     to: string | string [],
@@ -22,6 +24,10 @@ export class EmailService{
         }
     })
 
+    constructor(
+        
+    ){}
+
     async sendEmail(options: sendEmailOptions):Promise<boolean>{
         const {to, subject, htmlBody,attachments=[]}=options
         try{
@@ -32,10 +38,20 @@ export class EmailService{
                 attachments: attachments
             });
 
-            console.log(sentInfo)
+            const log =new LogEntitiy({
+                level: LogSeverityLevel.low,
+                message: 'Email Sent',
+                origin: 'email.service.ts',
+            })
+            //console.log(sentInfo)
 
             return true;
         }catch(error){
+            const log =new LogEntitiy({
+                level: LogSeverityLevel.high,
+                message: 'Email was not Sent',
+                origin: 'email.service.ts',
+            })
             return false;
         }
     }
@@ -48,8 +64,8 @@ export class EmailService{
             `
         const attachments:Attachment[]=[
             {filename: 'logs-all.log',path: './logs/logs-all.log'},
-            {filename: 'logs-all.log',path: './logs/logs-high.log'},
-            {filename: 'logs-all.log',path: './logs/logs-medium.log'},
+            {filename: 'logs-high.log',path: './logs/logs-high.log'},
+            {filename: 'logs-medium.log',path: './logs/logs-medium.log'},
         ]
         return this.sendEmail({
             to, subject, attachments, htmlBody
