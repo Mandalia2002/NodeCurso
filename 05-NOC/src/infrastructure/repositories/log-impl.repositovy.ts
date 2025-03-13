@@ -5,7 +5,7 @@ import { LogRepository } from "../../domain/repository/log.repository";
 export class LogRepositoryImpl implements LogRepository{
 
     constructor(
-        private readonly logdatasource : LogDataSource,
+        private readonly logdatasource : LogDataSource
     ){}
 
     async saveLog(log: LogEntitiy): Promise<void> {
