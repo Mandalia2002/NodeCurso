@@ -21,6 +21,7 @@ describe('postgreSQL-log', () => {
 
 
     afterAll(async () => {
+        await prism.logModel.deleteMany()
         prism.$disconnect()
     })
     test('save log', async () => {
@@ -30,7 +31,7 @@ describe('postgreSQL-log', () => {
         await lds.saveLog(log)
 
         expect(logSpy).toHaveBeenCalled()
-        expect(logSpy).toHaveBeenCalledWith("PostgreSQL log created", expect.any(String))
+        expect(logSpy).toHaveBeenCalledWith("PostgreSQL log created", expect.any(JSON.stringify))
     })
 
     test('get log', async () => {
@@ -40,7 +41,7 @@ describe('postgreSQL-log', () => {
         const log1 = await lds.getLog(LogSeverityLevel.medium)
 
         expect(log1.length).toBe(2)
-        expect(log1[0].level).toBe(LogSeverityLevel.medium)
+        expect(log1[0].level).toBe("MEDIUM")
     })
 })
 

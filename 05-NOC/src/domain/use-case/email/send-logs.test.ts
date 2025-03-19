@@ -18,38 +18,39 @@ describe('logs', () => {
         mocki
     )
 
-    beforeEach(()=>{
-        jest.clearAllMocks();
-    })
+    // beforeEach(()=>{
+    //     jest.clearAllMocks();
+    // })
 
     test('correct', async () => {
 
-        const result = await send.execute("aaaa@google.com")
+        const result = await send.execute("gct.sofia.perez@gmail.com")
 
         expect(result).toBe(true)
-        expect(msend.sendEmailWithFileSystemLog).toHaveBeenCalledTimes(1)
-        expect(mocki.saveLog).toHaveBeenCalledWith(expect.any(LogEntitiy))
+        expect(msend.sendEmailWithFileSystemLog).toBeCalledTimes(1)
+        expect(mocki.saveLog).toBeCalledWith(expect.any(LogEntitiy))
         expect(mocki.saveLog).toBeCalledWith({
             create: expect.any(Date),
             level: "low",
             message: `Log email sent`,
-            origin: 'send-logs.ts',
-            
+            origin: 'send-logs.ts'
         })
     })
 
-    test('correct', async () => {
+    test('incorrect', async () => {
+
+        msend.sendEmailWithFileSystemLog.mockReturnValue(false)
 
         const result = await send.execute("aaaa@google.com")
 
         expect(result).toBe(false)
-        expect(msend.sendEmailWithFileSystemLog).toHaveBeenCalledTimes(1)
-        expect(mocki.saveLog).toHaveBeenCalledWith(expect.any(LogEntitiy))
+        expect(msend.sendEmailWithFileSystemLog).toBeCalledTimes(1)
+        expect(mocki.saveLog).toBeCalledWith(expect.any(LogEntitiy))
         expect(mocki.saveLog).toBeCalledWith({
             create: expect.any(Date),
             level: "high",
-            message: `Email log not sent`,
-            origin: 'send-logs.ts',
+            message: `Error: Email log not sent`,
+            origin: 'send-logs.ts'
         })
     })
 
