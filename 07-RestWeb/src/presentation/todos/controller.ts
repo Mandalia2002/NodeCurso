@@ -48,7 +48,7 @@ export class TodosController {
             return
         }
 
-        new CreateTodo(this.todorepository).execute(create!).then(todo => res.json(todo)).catch(error => res.status(400).json({ error }))
+        new CreateTodo(this.todorepository).execute(create!).then(todo => res.status(201).json(todo)).catch(error => res.status(400).json({ error }))
 
         // const todo = await this.todorepository.create(create!)
         // res.json(todo)
@@ -60,12 +60,6 @@ export class TodosController {
         const id = + req.params.id
 
         const [error, updated] = UpdateDTOS.create({ ...req.body, id })
-        if (error) {
-            res.status(400).json({ error })
-            return
-        }
-
-        new GetTodo(this.todorepository).execute(id).then(todo => res.json(todo)).catch(error => res.status(404).json({ error }))
 
         new UpdateTodo(this.todorepository).execute(updated!).then(todo => res.json(todo)).catch(error => res.status(400).json({ error }))
 
