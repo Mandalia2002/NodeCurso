@@ -1,6 +1,7 @@
 import { Request, Response } from "express"
 import { CreateDTOS, UpdateDTOS } from "../../domain/dtos";
 import { GetTodos, GetTodo, UpdateTodo, DeleteTodo, CreateTodo, TodoRepository } from "../../domain";
+import { CustomError } from "../../domain/errors/custom.error";
 
 
 export class TodosController {
@@ -8,10 +9,19 @@ export class TodosController {
         private readonly todorepository: TodoRepository,
     ) { }
 
+    private handleError=(responde: Response, error:unknown)=>{
+        if(error instanceof CustomError){
+            responde.status(error.statusCode).json({error:error.message})
+            return
+        }
+        responde.status(500).json({error:'Internal Error CheckLog'})
+    }
+
     // Read All
     //*---------------------------------------------
     public getTodos = (req: Request, res: Response) => {
-        new GetTodos(this.todorepository).execute().then(todos => res.json(todos)).catch(error => res.status(400).json({ error }))
+        new GetTodos(this.todorepository).execute().then(todos => res.json(todos))
+        .catch(error => this.handleError(res,error))
     }
 
     //Read One
@@ -36,7 +46,10 @@ export class TodosController {
         // }
         //}
 
-        new GetTodo(this.todorepository).execute(id1).then(todo => res.json(todo)).catch(error => res.status(400).json({ error }))
+        new GetTodo(this.todorepository)
+            .execute(id1)
+            .then(todo => res.json(todo))
+            .catch(error => this.handleError(res,error))
     }
 
     //Create
@@ -48,7 +61,10 @@ export class TodosController {
             return
         }
 
-        new CreateTodo(this.todorepository).execute(create!).then(todo => res.status(201).json(todo)).catch(error => res.status(400).json({ error }))
+        new CreateTodo(this.todorepository)
+        .execute(create!)
+        .then(todo => res.status(201).json(todo))
+        .catch(error => this.handleError(res,error))
 
         // const todo = await this.todorepository.create(create!)
         // res.json(todo)
@@ -61,7 +77,10 @@ export class TodosController {
 
         const [error, updated] = UpdateDTOS.create({ ...req.body, id })
 
-        new UpdateTodo(this.todorepository).execute(updated!).then(todo => res.json(todo)).catch(error => res.status(400).json({ error }))
+        new UpdateTodo(this.todorepository)
+        .execute(updated!)
+        .then(todo => res.json(todo))
+        .catch(error => this.handleError(res,error))
 
         //{
         // try {
@@ -88,7 +107,8 @@ export class TodosController {
             return
         }
 
-        new DeleteTodo(this.todorepository).execute(id1).then(todo => res.json(todo)).catch(error => res.status(404).json({ error }))
+        new DeleteTodo(this.todorepository).execute(id1).then(todo => res.json(todo))
+        .catch(error => this.handleError(res,error))
 
         //{
         // const todo = todos.find(todo => todo.id === id);

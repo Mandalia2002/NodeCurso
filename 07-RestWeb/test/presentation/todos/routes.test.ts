@@ -70,7 +70,7 @@ describe('Route', () => {
 
     test('return 404 error api/todos/:id', async () => {
         const id = 999
-        const { body } = await request(testServer.app).get(`/api/todos/${id}`).expect(400)
+        const { body } = await request(testServer.app).get(`/api/todos/${id}`).expect(404)
 
         expect(body).toEqual({ error: `Todo with id ${id} not found` })
     })
@@ -100,7 +100,7 @@ describe('Route', () => {
 
     test('return error update not found api/todos/:id', async () => {
         const as = 555555
-        const { body } = await request(testServer.app).put(`/api/todos/${as}`).expect(400)
+        const { body } = await request(testServer.app).put(`/api/todos/${as}`).expect(404)
 
         expect(body).toEqual({ error: `Todo with id ${as} not found` })
     })
