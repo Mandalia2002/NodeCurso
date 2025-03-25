@@ -1,0 +1,14 @@
+node_modules/
+dist/
+logs/*
+.env
+coverage/
+extensions/
+Android/
+AppData/
+mongo/
+postgres/
+/mongo
+/postgres
+mongo-test/
+postgres-test/
