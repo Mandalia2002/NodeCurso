@@ -16,12 +16,12 @@ export class jsonwebtokenmanager {
 
     }
 
-    static validate(token: string) {
+    static validate<T>(token: string): Promise<T|null> {
         return new Promise((resolve) => {
             jwt.verify(token, seed, (err, decoded) => {
                 if (err) return resolve(null)
 
-                resolve(decoded)
+                resolve(decoded as T)
             })
         })
     }
