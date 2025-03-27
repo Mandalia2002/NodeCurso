@@ -1,8 +1,11 @@
-import { CustomError } from "../../domain"
+import { CustomError, PaginationDTO } from "../../domain"
 import { Response, Request } from 'express'
+import { CreateProDTO } from "../../domain"
+import { ProductService } from "../services/product.service"
 
 export class ProductController {
     constructor(
+        private readonly catser: ProductService
     ) { }
 
     private handleError = (error: unknown, res: Response) => {
@@ -13,15 +16,24 @@ export class ProductController {
         return CustomError.internalserver('Internal Server Error')
     }
 
-    createproduct = async (req: Request, res: Response) => {
-        res.json('Create Category')
-    }
+    createProduct = async (req: Request, res: Response) => {
+        const [error, create] = CreateProDTO.create({
+            ...req.body,
+            user: req.body.user.id,
+        })
+        if (error) return res.status(400).json({ error })
 
-    getproduct = async (req: Request, res: Response) => {
-        res.json('Get Category')
-    }
+        this.catser.createProduct(create!)
+            .then(product => res.status(201).json(product))
+            .catch((error) => this.handleError(error, res))
+     }
 
-    getproducts = async (req: Request, res: Response) => {
-        res.json('Get Category')
+    getProduct = async (req: Request, res: Response) => {
+        const { page=1, limit=10} = req.query
+        const [error, pagina] = PaginationDTO.create(+page, +limit)
+        if (error) return res.status(400).json({ error })
+        this.catser.getproducts(pagina!)
+            .then(product => res.status(201).json(product))
+            .catch((error) => this.handleError(error, res))
     }
 }

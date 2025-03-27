@@ -1,17 +1,19 @@
 import { Router } from 'express';
 import { ProductController } from './controller';
+import { ProductService } from '../services/product.service';
+import { AuthMiddleware } from '../auth.middleware';
 
-export class ProductRoutes {
+export class ProductsRoutes {
 
   static get routes(): Router {
 
     const router = Router();
-    const controller= new ProductController()
+    const product= new ProductService()
+    const controller= new ProductController(product)
     
     // Definir las rutas
-    router.get('/', controller.getproduct);
-    router.get('/', controller.getproducts);
-    router.post('/', controller.createproduct);
+    router.get('/', controller.getProduct);
+    router.post('/',[AuthMiddleware.validateJWT], controller.createProduct);
     
     return router;
   }
