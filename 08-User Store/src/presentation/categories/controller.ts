@@ -28,7 +28,7 @@ export class CategoryController {
         const {page=1, limit=10} = req.query
         const[error, pagina] =PaginationDTO.create(+page,+limit)
         if (error) return res.status(400).json({ error })
-        this.catser.getCategories()
+        this.catser.getCategories(pagina!)
             .then(category => res.status(201).json(category))
             .catch((error) => this.handleError(error, res))
     }
