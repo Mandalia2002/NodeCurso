@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import { jsonwebtokenmanager } from "../config";
-import { userModel } from "../data/mongo";
-import { UserIdentity } from "../domain";
+import { jsonwebtokenmanager } from "../../config";
+import { userModel } from "../../data/mongo";
+import { UserIdentity } from "../../domain";
 
 export class AuthMiddleware {
     static async validateJWT(req: Request, res: Response, next: NextFunction) {
