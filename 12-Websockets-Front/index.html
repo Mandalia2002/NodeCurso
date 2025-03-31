@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Websocket sisisisi</h1>
+
+    <form action="">
+        <input type="text" placeholder="Enviar mensaje">
+        <button>Enviar</button>
+    </form>
+
+    <ul id="mensajes">
+
+    </ul>
+
+    <script>
+        const socket = new WebSocket('ws://localhost:3000')
+
+        const form = document.querySelector('form')
+        const input = document.querySelector('input')
+        const ulListElement = document.querySelector('messages')
+
+        function sendMessage(message){
+            socket.send(message)
+        }
+
+        function renderMessage(message){
+            const li= document.createElement('li')
+            li.innerHTML=message
+            messageElem.prepend(li)
+        }
+
+        form.addEventListener('submit',(event)=>{
+            event.preventDefault()
+            const message=input.value
+            sendMessage(message)
+        })
+
+        socket.onmessage=(event)=>{
+            const payload =JSON.parse(event.data)
+            console.log(payload)
+        }
+
+        socket.onopen=(event)=>{
+            console.log(event)
+            console.log('Connected')
+        }
+
+        socket.onclose=(event)=>{
+            console.log(event)
+            console.log('Disconnected')
+        }
+    </script>
+</body>
+</html>
