@@ -13,3 +13,4 @@ mongo-test/
 postgres-test/
 # Local Netlify folder
 .netlify
+.DS_STORE
